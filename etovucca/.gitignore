@@ -1,0 +1,6 @@
+.tags
+*.sqlite3
+*.o
+etovucca
+*.so
+sqlite3
