@@ -1,5 +1,6 @@
 CC=gcc
 CFLAGS=-g -Wall -Werror -pedantic -std=gnu99 -I./lib
+LDFLAGS=-L. -Wl,-rpath,.
 TARGET=etovucca
 SRCDIR=src
 LIBDIR=lib
@@ -13,7 +14,7 @@ cgi: etovucca
 		python3 -m http.server --cgi
 
 etovucca: $(DEPS) $(SRCDIR)/RTBB.c
-		$(CC) $(CFLAGS) -o $@ $^ -L./ -lsqlite3
+		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lsqlite3
 
 Database.o: $(SRCDIR)/Database.c
 		$(CC) $(CFLAGS) -o $@ -c $^
