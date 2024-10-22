@@ -51,7 +51,7 @@ bool parseDate(const char * const date_in, Date *date_out) {
    return true;
 }
 
-void close_db() {
+void closeDb(void) {
    sqlite3_close(db);
 }
 
@@ -66,7 +66,7 @@ int main(int argc, char **argv) {
       printf("Error opening database\n");
       return ERROR;
    }
-   if (atexit(close_db)) {
+   if (atexit(closeDb)) {
       printf("Error registering callback\n");
       return ERROR;
    }
